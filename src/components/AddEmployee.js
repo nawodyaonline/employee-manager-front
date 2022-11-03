@@ -1,6 +1,20 @@
 import React from 'react'
+import { useState } from 'react'
 
 const AddEmployee = () => {
+
+  const [employee, setEmployee] = useState({
+    id: "",
+    firstName: "",
+    lastName: "",
+    emailId: ""
+  })
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setEmployee({...employee, [e.target.name]: value});
+  }
+
   return (
     <div className="flex max-w-2xl mx-auto shadow border-b">
         <div className="px-8 py-8">
@@ -9,15 +23,21 @@ const AddEmployee = () => {
             </div>
             <div className="items-center justify-center h-14 w-full my-4">
                 <label className="block text-gray-600 text-sm font-normal" htmlFor="">First Name</label>
-                <input className="h-10 w-96 border mt-2 px-2 py-2" type="text" />
+                <input name="firstName"
+                onChange={(e) => handleChange(e)}
+                value={employee.firstName} className="h-10 w-96 border mt-2 px-2 py-2" type="text" />
             </div>
             <div className="items-center justify-center h-14 w-full my-4">
                 <label className="block text-gray-600 text-sm font-normal" htmlFor="">Last Name</label>
-                <input className="h-10 w-96 border mt-2 px-2 py-2" type="text" />
+                <input name='lastName'
+                onChange={(e) => handleChange(e)}
+                value={employee.lastName} className="h-10 w-96 border mt-2 px-2 py-2" type="text" />
             </div>
             <div className="items-center justify-center h-14 w-full my-4">
                 <label className="block text-gray-600 text-sm font-normal" htmlFor="">Email</label>
-                <input className="h-10 w-96 border mt-2 px-2 py-2" type="email" />
+                <input name='emailId'
+                onChange={(e) => handleChange(e)}
+                value={employee.emailId} className="h-10 w-96 border mt-2 px-2 py-2" type="email" />
             </div>
 
             <div className="items-center justify-center h-14 w-full my-4 space-x-4 pt-4">
